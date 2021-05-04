@@ -282,3 +282,46 @@
       visibility: hidden;
     }
   }
+
+button {
+  height: -webkit-fill-available;
+}
+  ::ng-deep {
+    snack-bar-container {
+        &.error {
+            background-color: orange;
+        }
+        &.success {
+            background-color: green;
+        }
+        span {
+            color: white;
+            font-weight: bold;
+        }
+    }
+    body {
+    overflow-x: hidden;
+    }
+/* width */
+::-webkit-scrollbar {
+    width: 7px;
+    height: 7px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey; 
+    border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #c00a27; 
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #c00a27; 
+}
+}

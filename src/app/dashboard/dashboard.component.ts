@@ -127,7 +127,9 @@ export class DashboardComponent implements OnInit {
       }
     });
     paiementDialog.afterClosed().subscribe(commande => {
-      this.dashboardService.creerCommande(commande).subscribe( () => this.snackbarService.open('Commande créée', 'success'))
+      if(commande) {
+        this.dashboardService.creerCommande(commande).subscribe( () => this.snackbarService.open('Commande créée', 'success'));
+      }
     });
   }
 

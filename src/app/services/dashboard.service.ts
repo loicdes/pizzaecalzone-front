@@ -16,4 +16,7 @@ export class DashboardService {
     creerCommande(commande: Commande): Observable<any> {
         return this.http.post(commande, '/commande');
     }
+    getCommandes(): Observable<Commande[]> {
+        return this.http.get('/commandes');
+    }
 }

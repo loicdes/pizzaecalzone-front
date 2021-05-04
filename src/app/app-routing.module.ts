@@ -8,6 +8,10 @@ const routes: Routes = [
     path: '',
     component: DashboardComponent
   },
+  {
+    path: 'commandes',
+    loadChildren: () => import('./commandes/commandes.module').then(m => m.CommandesModule)
+  },
   { path: '**', pathMatch: 'full', redirectTo: '' }
 ];
 
