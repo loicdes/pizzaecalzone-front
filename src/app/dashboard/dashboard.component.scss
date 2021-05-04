@@ -1,0 +1,52 @@
+.dashboard {
+    height: calc(70% - 60px);
+    .mat-card {
+        box-shadow: 1px 1px 12px #555;
+        max-width: 150px;
+        margin: 5px; 
+        .mat-card-header .mat-card-title {
+            font-size: small;
+            margin: 0;
+            text-align: center;
+        }
+        ::ng-deep .mat-card-header-text {
+            width: 100%;
+        }
+        .mat-card-actions {
+            margin-bottom: -15px;
+            display: flex;
+            .mat-button {
+                margin: auto;
+            }
+        }
+    }
+}
+.footer {
+    height: calc(25% - 30px);
+
+    .commande-actions {
+        display: flex;
+        height: 100%;
+        .mat-divider {
+            width: 2px;
+            color: #555;
+        }
+    }
+    .actions {
+        text-align: center;
+    }
+    .commande {
+        display: flex;
+        width: 100%;
+        overflow: auto;
+        .delete {
+            position: absolute;
+            right: 5px;
+            top: 0;
+            color: white;
+            background-color: red;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+    }
+}

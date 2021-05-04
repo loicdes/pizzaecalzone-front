@@ -1,0 +1,111 @@
+<mat-tab-group class="dashboard" mat-align-tabs="center">
+    <mat-tab label="Pizzas">
+        <mat-grid-list cols="6" rowHeight="2:1" *ngIf="dataLoaded">
+            <mat-grid-tile *ngFor="let pizza of dashboardData.pizzas">
+                <mat-card>
+                    <mat-card-header>
+                        <mat-card-title>{{pizza.designation}}</mat-card-title>
+                    </mat-card-header>
+                    <mat-card-actions>
+                        <button (click)="ajouterALaCommande(pizza, pizza.prix.petite)" mat-button> {{ pizza.prix.petite }}€ </button>
+                        <button (click)="ajouterALaCommande(pizza, pizza.prix.grande)" mat-button> {{ pizza.prix.grande }}€ </button>
+                    </mat-card-actions>
+                </mat-card>
+            </mat-grid-tile>
+        </mat-grid-list>
+    </mat-tab>
+    <mat-tab label="Calzones">
+        <mat-grid-list cols="6" rowHeight="2:1" *ngIf="dataLoaded">
+            <mat-grid-tile *ngFor="let calzone of dashboardData.calzones">
+                <mat-card>
+                    <mat-card-header>
+                        <mat-card-title>{{calzone.designation}}</mat-card-title>
+                    </mat-card-header>
+                    <mat-card-actions>
+                        <button (click)="ajouterALaCommande(calzone, calzone.prix.petite)" mat-button> {{ calzone.prix.petite }}€ </button>
+                        <button (click)="ajouterALaCommande(calzone, calzone.prix.petite)" mat-button> {{ calzone.prix.grande }}€ </button>
+                    </mat-card-actions>
+                </mat-card>
+            </mat-grid-tile>
+        </mat-grid-list>
+    </mat-tab>
+    <mat-tab label="Salades">
+        <mat-grid-list cols="6" rowHeight="2:1" *ngIf="dataLoaded">
+            <mat-grid-tile *ngFor="let salade of dashboardData.salades">
+                <mat-card (click)="ajouterALaCommande(salade, salade.prix)">
+                    <mat-card-header>
+                        <mat-card-title>{{salade.designation}}</mat-card-title>
+                    </mat-card-header>
+                    <mat-card-actions>
+                        <button mat-button> {{ salade.prix }}€ </button>
+                    </mat-card-actions>
+                </mat-card>
+            </mat-grid-tile>
+        </mat-grid-list>
+    </mat-tab>
+    <mat-tab label="Boissons">
+        <mat-grid-list cols="6" rowHeight="2:1" *ngIf="dataLoaded">
+            <mat-grid-tile *ngFor="let boisson of dashboardData.boissons">
+                <mat-card (click)="ajouterALaCommande(boisson, boisson.prix)">
+                    <mat-card-header>
+                        <mat-card-title>{{boisson.designation}}</mat-card-title>
+                    </mat-card-header>
+                    <mat-card-actions>
+                        <button mat-button> {{ boisson.prix }}€ </button>
+                    </mat-card-actions>
+                </mat-card>
+            </mat-grid-tile>
+        </mat-grid-list>
+    </mat-tab>
+    <mat-tab label="Dessert">
+        <mat-grid-list cols="6" rowHeight="2:1" *ngIf="dataLoaded">
+            <mat-grid-tile *ngFor="let dessert of dashboardData.desserts">
+                <mat-card (click)="ajouterALaCommande(dessert, dessert.prix)">
+                    <mat-card-header>
+                        <mat-card-title>{{dessert.designation}}</mat-card-title>
+                    </mat-card-header>
+                    <mat-card-actions>
+                        <button mat-button> {{ dessert.prix }}€ </button>
+                    </mat-card-actions>
+                </mat-card>
+            </mat-grid-tile>
+        </mat-grid-list>
+    </mat-tab>
+    <mat-tab label="Formules">
+        <mat-grid-list cols="6" rowHeight="2:1" *ngIf="dataLoaded">
+            <mat-grid-tile *ngFor="let formule of dashboardData.formules">
+                <mat-card (click)="ouvrirPopupFormule(formule)">
+                    <mat-card-header>
+                        <mat-card-title>{{formule.designation}}</mat-card-title>
+                    </mat-card-header>
+                    <mat-card-actions>
+                        <button mat-button> {{ formule.prix }}€ </button>
+                    </mat-card-actions>
+                </mat-card>
+            </mat-grid-tile>
+        </mat-grid-list>
+    </mat-tab>
+</mat-tab-group>
+<div class="footer">
+    <h2>Commande</h2>
+    <div class="commande-actions">
+        <div class="commande">
+            <mat-card *ngFor="let produit of commande.produits">
+                <mat-icon class="delete" (click)="supprimer(produit)">close</mat-icon>
+                <mat-card-header>
+                    <mat-card-title>{{produit.designation}}</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <p *ngIf="produit.commentaire"> {{produit.commentaire }} </p>
+                    <p> {{ produit.prix }}€ </p>
+                </mat-card-content>
+            </mat-card>
+        </div>
+        <mat-divider [vertical]="true"></mat-divider>
+        <div class="actions">
+            <h1>{{ commande.prix ? commande.prix : 0 }}€</h1>
+            <button mat-button (click)="ouvrirPopupPaiement()">Payer</button>
+            <button mat-button (click)="annuler()">Annuler</button>
+        </div>
+    </div>
+</div>

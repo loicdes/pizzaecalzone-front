@@ -1,0 +1,21 @@
+<mat-form-field appearance="fill">
+    <mat-label>Pizzas</mat-label>
+    <mat-select [multiple]="true" [(value)]="pizzasSelectionnees">
+        <mat-option [disabled]="pizzasSelectionnees.length >= data.nbrPizzas && !isSelected(pizza)"
+          *ngFor="let pizza of data.pizzas" [value]="pizza">
+          {{ pizza.designation }}
+        </mat-option>
+    </mat-select>
+</mat-form-field>
+<mat-form-field appearance="fill">
+    <mat-label>Boissons</mat-label>
+    <mat-select [(value)]="boissonsSelectionnees">
+        <mat-option *ngFor="let boisson of data.boissons" [value]="boisson"> {{ boisson.designation }}</mat-option>
+    </mat-select>
+</mat-form-field>
+<div class="actions">
+    <button mat-button mat-dialog-close>Annuler</button>
+    <button 
+    [disabled]="!boissonsSelectionnees || pizzasSelectionnees.length !== data.nbrPizzas" 
+    mat-button (click)="confirmer()">Confirmer</button>
+</div>

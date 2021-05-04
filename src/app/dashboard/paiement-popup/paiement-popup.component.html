@@ -1,0 +1,18 @@
+<mat-form-field appearance="fill">
+    <mat-label>Input</mat-label>
+    <input matInput [(value)]="data.commande.prix">
+  </mat-form-field>
+<mat-form-field appearance="fill">
+    <mat-label>Mode de paiement</mat-label>
+    <mat-select [(value)]="data.commande.modeDePaiement">
+        <mat-option [value]="'Carte bleue'">Carte blue</mat-option>
+        <mat-option [value]="'Espèces'">Espèces</mat-option>
+        <mat-option [value]="'tickets restaurant'">Tickets restaurant</mat-option>
+        <mat-option [value]="'Chèque vacances'">Chèque vacances</mat-option>
+    </mat-select>
+</mat-form-field>
+<div class="actions">
+    <button mat-button mat-dialog-close>Annuler</button>
+    <button [disabled]="!data.commande.modeDePaiement" 
+    mat-button (click)="confirmer()">Confirmer</button>
+</div>
