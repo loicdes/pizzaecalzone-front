@@ -1,5 +1,5 @@
 .dashboard {
-    height: calc(70% - 60px);
+    height: calc(70% - 70px);
     .mat-card {
         box-shadow: 1px 1px 12px #555;
         max-width: 150px;
@@ -47,6 +47,11 @@
             background-color: red;
             border-radius: 10px;
             cursor: pointer;
+        }
+        mat-card {
+            height: 90px;
+            box-shadow: 1px 1px 12px #555;
+            margin-left: 10px;
         }
     }
 }
